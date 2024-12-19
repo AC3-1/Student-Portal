@@ -10,7 +10,6 @@ from view_my_info import view_my_stu_info
 win = Tk()
 win.title("Student Portal")
 win.geometry(f"1280x800+{(win.winfo_screenwidth() - 1280) // 2}+{(win.winfo_screenheight() - 800) // 2}")
-file_wipe(STUDENT_FILE)
 
 btns, containers = [], []
 student_list = load_students_from_file()

@@ -1,13 +1,13 @@
 from tkinter import *
 
-def view_all_stu_info_gui(parent_frame, students):
-    for widget in parent_frame.winfo_children():
+def view_all_stu_info_gui(container, students):
+    for widget in container.winfo_children():
         widget.destroy()
 
-    Label(parent_frame, text="All Students Information", font=("Century Gothic", 16), bg="white").pack(pady=10)
+    Label(container, text="All Students Information", font=("Century Gothic", 16), bg="gray").pack(pady=10)
 
     if not students:
-        Label(parent_frame, text="No students in the system.", font=("Century Gothic", 14), bg="white", fg="red").pack(pady=20)
+        Label(container, text="No students in the system.", font=("Century Gothic", 14), bg="gray", fg="red").pack(pady=20)
     else:
         for student in students:
             student_info = (
@@ -17,8 +17,6 @@ def view_all_stu_info_gui(parent_frame, students):
                 f"Email: {student.getEmail()}\n"
                 f"Phone: {student.getPhoneNum()}"
             )
-            student_label = Label(parent_frame, text=student_info, font=("Century Gothic", 14), bg="white", justify="left", wraplength=600)
+            student_label = Label(container, text=student_info, font=("Century Gothic", 14), bg="gray", justify="left", wraplength=600)
             student_label.pack(pady=10)
-            Label(parent_frame, text="-"*30, font=("Century Gothic", 14), bg="white").pack()
-
-
+            Label(container, text="-"*30, font=("Century Gothic", 14), bg="gray").pack()

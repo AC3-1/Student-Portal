@@ -3,9 +3,6 @@ import os
 from tkinter import *
 import tkinter.messagebox
 
-def clear():
-    os.system('cls')
-
 STUDENT_FILE = "students.txt"
 
 class AddStudent:
@@ -23,6 +20,7 @@ class AddStudent:
         student.setPhoneNum(phone)
 
         self.student_data.append(student)
+        self.add_student_to_file(student)
         print(f"Student {student.FullName()} added successfully")
         self.add_student_to_file(student)
 
@@ -43,10 +41,9 @@ class AddStudent:
                 email = input("Enter email: ")
                 phone = input("Enter phone number: ")
 
-                # Add the student
                 new_student = StudentInfo(fname, lname, age, Idnum, password, email, phone)
                 self.student_data.append(new_student)
-                self.save_students_to_file()
+                self.add_student_to_file(new_student)
                 print("Student added successfully!")
 
                 add_another = input("Do you want to add another student? [Y/N]: ").strip().lower()
@@ -54,12 +51,12 @@ class AddStudent:
                     break
 
     def show_reg_ui(self, reg_frame):
-        self.lblError = Label(reg_frame, text="", font=("Century Gothic", 12), fg="red")
+        self.lblError = Label(reg_frame, text="", font=("Century Gothic", 12), fg="red", bg="gray")
         self.lblError.grid(row=1, column=0, columnspan=2)
         self.reg_lbl_txt = ["First Name", "Last Name", "Age", "ID Number", "Password", "Email", "Phone Number"]
         self.reg_entries = []
         for i in range(len(self.reg_lbl_txt)):
-            Label(reg_frame, text=self.reg_lbl_txt[i], font=("Century Gothic", 14), width=14, anchor="e").grid(row=i+2, column=0)
+            Label(reg_frame, text=self.reg_lbl_txt[i], font=("Century Gothic", 14), width=14, anchor="e", bg="gray").grid(row=i+2, column=0)
             self.reg_entries.append(Entry(reg_frame, font=("Century Gothic", 14)))
             self.reg_entries[i].grid(row=i+2, column=1)
         reg_btn = Button(reg_frame, text="Register", font=("Century Gothic", 14), command=self.check_entry)
