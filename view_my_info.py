@@ -1,7 +1,6 @@
 from tkinter import Label
 
 def view_my_stu_info(container, student):
-    # Clear the container to avoid stacking widgets
     for widget in container.winfo_children():
         widget.destroy()
         
