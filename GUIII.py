@@ -36,6 +36,7 @@ def validate_login(username, password):
 
 def Exit_Program():
     win.destroy()
+    login_contain()
 
 def open_frame(frame_open, close):
     for i in range(len(close)):
